@@ -12,29 +12,9 @@
 </head>
 <body>
     <div class="wrapper" >
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <img src="../IMAGES/rupppng.png" alt="">
-                <h5>Stock Management System</h5>
-            </div>
-
-            <ul class="list-unstyled components">
-                <li>
-                    <a href="#"><i class="fa-solid fa-boxes-stacked" style="margin-right: 15px;"></i>Dashboard</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa-solid fa-arrow-up-from-bracket" style="margin-right: 15px;"></i>Export Products</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa-solid fa-boxes-packing" style="margin-right: 15px;"></i>View Products</a>
-                </li>
-            </ul>
-
-            <button type="submit"><i class="fa-solid fa-circle-xmark" style="margin-right: 10px; color:red;"></i>Logout</button>
-   
-        </nav>
+        <div id="navbar-container"></div>
     <div class="content">  
+
         <div class="container mt-4">
             
             <div class="row g-4">
@@ -44,8 +24,10 @@
                     <div class="product-card">
                         <span class="stock-label stock-high">Stock: 200</span>
                         <img src="../IMAGES/centella.png" class="img-fluid" alt="Product">
-                        <h5>Centella Serum</h5>
-                        <p>Unit Price: 10$</p>
+                        <div class="text">
+                            <h5>Centella Serum</h5>
+                            <p>Unit Price: 10$</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -53,8 +35,10 @@
                     <div class="product-card">
                         <span class="stock-label stock-medium">Stock: 50</span>
                         <img src="../IMAGES/centella.png" class="img-fluid" alt="Product">
-                        <h5>Centella Serum</h5>
-                        <p>Unit Price: 10$</p>
+                        <div class="text">
+                            <h5>Centella Serum</h5>
+                            <p>Unit Price: 10$</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -62,8 +46,10 @@
                     <div class="product-card">
                         <span class="stock-label stock-low">Stock: 20</span>
                         <img src="../IMAGES/centella.png" class="img-fluid" alt="Product">
-                        <h5>Centella Serum</h5>
-                        <p>Unit Price: 10$</p>
+                        <div class="text">
+                            <h5>Centella Serum</h5>
+                            <p>Unit Price: 10$</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -71,8 +57,10 @@
                     <div class="product-card">
                         <span class="stock-label stock-low">Stock: 20</span>
                         <img src="../IMAGES/centella.png" class="img-fluid" alt="Product">
-                        <h5>Centella Serum</h5>
-                        <p>Unit Price: 10$</p>
+                        <div class="text">
+                            <h5>Centella Serum</h5>
+                            <p>Unit Price: 10$</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -80,17 +68,22 @@
                     <div class="product-card">
                         <span class="stock-label stock-low">Stock: 20</span>
                         <img src="../IMAGES/centella.png" class="img-fluid" alt="Product">
-                        <h5>Centella Serum</h5>
-                        <p>Unit Price: 10$</p>
+                        <div class="text">
+                            <h5>Centella Serum</h5>
+                            <p>Unit Price: 10$</p>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="product-card">
                         <span class="stock-label stock-low">Stock: 20</span>
+
                         <img src="../IMAGES/centella.png" class="img-fluid" alt="Product">
-                        <h5>Centella Serum</h5>
-                        <p>Unit Price: 10$</p>
+                        <div class="text">
+                            <h5>Centella Serum</h5>
+                            <p>Unit Price: 10$</p>
+                        </div>
                     </div>
                 </div>
 
@@ -98,8 +91,10 @@
                     <div class="product-card">
                         <span class="stock-label stock-low">Stock: 20</span>
                         <img src="../IMAGES/centella.png" class="img-fluid" alt="Product">
-                        <h5>Centella Serum</h5>
-                        <p>Unit Price: 10$</p>
+                        <div class="text">
+                            <h5>Centella Serum</h5>
+                            <p>Unit Price: 10$</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -107,8 +102,10 @@
                     <div class="product-card">
                         <span class="stock-label stock-low">Stock: 20</span>
                         <img src="../IMAGES/centella.png" class="img-fluid" alt="Product">
-                        <h5>Centella Serum</h5>
-                        <p>Unit Price: 10$</p>
+                        <div class="text">
+                            <h5>Centella Serum</h5>
+                            <p>Unit Price: 10$</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -116,14 +113,73 @@
                     <div class="product-card">
                         <span class="stock-label stock-low">Stock: 20</span>
                         <img src="../IMAGES/centella.png" class="img-fluid" alt="Product">
-                        <h5>Centella Serum</h5>
-                        <p>Unit Price: 10$</p>
+                        <div class="text">
+                            <h5>Centella Serum</h5>
+                            <p>Unit Price: 10$</p>
+                        </div>
                     </div>
                 </div>
+                <div class="container py-4">
+                    <div class="order-container">
+                        <div class="header">
+                            <div class="row">
+                                <div class="col-4">ID</div>
+                                <div class="col-4">Name</div>
+                                <div class="col-4">Qty</div>
+                            </div>
+                        </div>
+                        <div class="item-list">
+                            <div class="item d-flex">
+                                <div class="col-4">01</div>
+                                <div class="col-4">Centella Sunscreen</div>
+                                <div class="col-3">10</div>
+                                <div class="col-1 text-end text-danger">&times;</div>
+                            </div>
+                            <div class="item d-flex">
+                                <div class="col-4">01</div>
+                                <div class="col-4">Centella Sunscreen</div>
+                                <div class="col-3">10</div>
+                                <div class="col-1 text-end text-danger">&times;</div>
+                            </div>
+                            <div class="item d-flex">
+                                <div class="col-4">01</div>
+                                <div class="col-4">Centella Sunscreen</div>
+                                <div class="col-3">10</div>
+                                <div class="col-1 text-end text-danger">&times;</div>
+                            </div>
+                            <div class="item d-flex">
+                                <div class="col-4">01</div>
+                                <div class="col-4">Centella Sunscreen</div>
+                                <div class="col-3">10</div>
+                                <div class="col-1 text-end text-danger">&times;</div>
+                            </div>
+                            <div class="item d-flex">
+                                <div class="col-4">01</div>
+                                <div class="col-4">Centella Sunscreen</div>
+                                <div class="col-3">10</div>
 
+                                <div class="col-1 text-end text-danger">&times;</div>
+                            </div>
+                            <div class="item d-flex">
+                                <div class="col-4">01</div>
+                                <div class="col-4">Centella Sunscreen</div>
+                                <div class="col-3">10</div>
+                                <div class="col-1 text-end text-danger">&times;</div>
+                            </div>
+                        </div>
+                        <div class="total-item">
+                            <div class="total">Total Items: 60</div> 
+                            <div class="text-center">
+                                <button class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                       
+                    </div>
                
             </div>      
         </div>
     </div> 
+    <script src="../Navbar/navbar.js"></script>
 </body>
 </html>
+

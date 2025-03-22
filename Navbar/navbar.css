@@ -1,0 +1,152 @@
+/*
+    DEMO STYLE
+*/
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style-type: none;
+        text-decoration: none;
+
+}
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #EEFAFF;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    /* background-color: #006ABD; */
+    width: 100%;
+    display: flex;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #C4DFF2;
+    color: #3d3d3d;
+    transition: all 0.3s;
+    margin-top: 2%;
+    height: 96vh;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Adds a soft black shadow */
+    
+
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    text-align: center;
+    /* background-color: #a22222; */
+}
+#sidebar .sidebar-header img{
+    width: 75%;
+}
+
+#sidebar .sidebar-header h5{
+    font-weight:bold;
+    font-size: 20px;
+}
+
+#sidebar ul.components {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30%;
+    
+    /* border-bottom: 1px solid #47748b; */
+}
+
+
+#sidebar ul li a {
+    padding: 18px;
+    font-size: 1rem;
+    display: block;
+    font-weight: bold;
+}
+
+#sidebar ul li a:hover {
+    /* color: #7386D5; */
+    background: #fff;
+    width: 100%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: #006ABD;
+}
+
+#sidebar button{
+    width: 80%;
+    margin-left: 20px;
+    margin-top: 60%;
+    background: transparent;
+    color: #3d3d3d;
+    border-radius: 20px;
+    padding: 10px;
+    font-weight: bold;
+    border: 3px solid white;
+}
+#sidebar button:hover{
+    background: #006ABD;
+    color: white;
+    border: 3px solid #006ABD;;
+}
+
+  #prodct-container{
+    display: flex;
+    flex-direction: row;
+  }
+  .card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .card-header {
+    border-radius: 15px 15px 0 0;
+    font-weight: bold;
+  }
+  
+  .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }

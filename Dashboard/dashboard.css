@@ -165,4 +165,59 @@ align-items: center;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgb(75, 5, 5);
 }
+.order-container {
+    position:fixed; /* or 'fixed' if you want it to stay visible on scroll */
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    display: none;
+}
+.head{
+    padding-bottom: 20px;
+}
+h3{
+    text-align: center;
+}
+.header{
+    background-color: #006ABD;
+    border-radius: 10px;
+    padding: 10px;
+}
+.total-item{
+    display: flex;
+    justify-content: space-between;
+
+}
+.item-list{
+    padding: 10px;
+}
+.order{
+    position:fixed; 
+    top: 10px;
+    left:10px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    display: none;
+}
+.fa-circle-xmark {
+    float: inline-end;
+}
+.fa-circle-xmark:hover{
+   color: #999;
+}
+h3{
+    padding-top: 10px;
+}
+.button{
+    text-align: center;
+    padding-top: 10px;
+}
+
 

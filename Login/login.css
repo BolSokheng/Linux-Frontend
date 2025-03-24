@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    color: #303030;
+    background-color: #ffffff;
+}
+
+.login{
+    margin: 0 auto;
+    margin-top: 3%;
+    height: 80vh;
+    width:30%;
+    box-shadow: 2px 4px 8px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    background-color: white;
+}
+.login h1{
+    font-size: 20px;
+}
+
+.login .right{
+    background-color: white;
+    /* padding: 10%; */
+    margin: 0 auto;
+    width: 85%;
+
+}
+
+
+.login .right label{
+    font-weight: 600;
+    font-size: 18px;
+}
+.login .right input{
+    margin: 0 auto;
+    margin-top: 5px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    padding-left: 15px;
+    background-color: rgb(234, 234, 234);
+    border:2px solid rgb(234, 234, 234);
+    box-shadow: 2px 4px 3px 1px rgba(27, 27, 27, 0.2);
+    margin-bottom: 20px;
+}
+.login .right button{
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 50px;
+    border: none;
+    background-color: #006ABD;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+.login .right button:hover{
+    background-color: #004981;
+
+}
+
+
+.login .right .icon{
+    margin: 0 auto;
+    width: 40%;
+}
+.login .right .icon img{
+    width: 100%;
+}
+
+.login .right h2{
+    margin: 0 auto;
+    /* background-color: #006ABD; */
+    width: 60%;
+    font-size: 25px;
+    text-align: center;
+    color: #383838;
+    margin-bottom: 40px;
+}
+

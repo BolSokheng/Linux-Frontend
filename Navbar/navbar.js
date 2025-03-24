@@ -1,76 +1,59 @@
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Sample Best Imported Products
-//     const products = [
-//       { name: "Centella Sunscreen", quantity: 160 },
-//       { name: "Beauty of Joseon Serum", quantity: 154 },
-//       { name: "Beauty of Joseon Sunscreen", quantity: 150 },
-//       { name: "IUNIK Sunscreen", quantity: 143 },
-//     ];
-  
-//     const productContainer = document.getElementById("product-container");
-//     products.forEach(product => {
-//       const card = `
-//         <div class="col-6 col-md-3 col-lg-2"> <!-- Wrap each card in a column -->
-//           <div class="card text-center p-2">
-//             <img src="https://via.placeholder.com/60" class="card-img-top mx-auto" alt="${product.name}">
-//             <div class="card-body p-1">
-//               <h6 class="card-title">${product.name}</h6>
-//               <p class="card-text text-success">Imported: ${product.quantity}</p>
-//             </div>
-//           </div>
-//         </div>
-//       `;
-//       productContainer.innerHTML += card; // Append the column div, not just the card
-//     });
-
-  
-//     // Sample Stock Alerts
-//     const stockAlerts = [
-//       { name: "Product A", remain: 10 },
-//       { name: "Product B", remain: 15 },
-//       { name: "Product C", remain: 16 },
-//       { name: "Product D", remain: 16 },
-//       { name: "Product E", remain: 19 }
-//     ];
-  
-//     const stockAlertList = document.getElementById("stock-alert-list");
-//     stockAlerts.forEach(item => {
-//       const listItem = `
-//         <li class="list-group-item">
-//           <span>${item.name} (Remaining: ${item.remain})</span>
-//           <span class="badge bg-danger">!</span>
-//         </li>
-//       `;
-//       stockAlertList.innerHTML += listItem;
-//     });
-  
-//     // Sample Export Reports
-//     const exportReports = [
-//       { id: "001", date: "01/03/2025" },
-//       { id: "002", date: "01/03/2025" },
-//       { id: "003", date: "01/03/2025" },
-//       { id: "004", date: "01/03/2025" },
-//       { id: "005", date: "01/03/2025" },
-//     ];
-  
-//     const exportReportList = document.getElementById("export-report-list");
-//     exportReports.forEach(report => {
-//       const reportItem = `
-//         <li class="list-group-item">
-//           <span>ExportID: ${report.id} | Date: ${report.date}</span>
-//           <button class="btn btn-sm btn-outline-dark"><i class="bi bi-eye"></i></button>
-//         </li>
-//       `;
-//       exportReportList.innerHTML += reportItem;
-//     });
-//   });
-
-
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("../Navbar/navbar.html") // Adjust path if needed
-      .then(response => response.text())
-      .then(data => {
-          document.getElementById("navbar-container").innerHTML = data;
-      })
-      .catch(error => console.error("Error loading navbar:", error));
+    // Load Navbar
+    fetch("../Navbar/navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("navbar-container").innerHTML = data;
+            
+            // Highlight active page
+            highlightActiveLink();
+
+            // Now that navbar is loaded, add event listener for Logout button
+            const logoutButton = document.querySelector("#logout-btn");
+            if (logoutButton) {
+                logoutButton.addEventListener("click", showLogoutConfirmation);
+            }
+        })
+        .catch(error => console.error("Error loading navbar:", error));
 });
+
+// Function to highlight active page in Navbar
+function highlightActiveLink() {
+    const currentPage = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+        if (link.getAttribute("href").includes(currentPage)) {
+            link.classList.add("active"); // Add active class
+        }
+    });
+}
+
+// Function to show logout confirmation modal
+function showLogoutConfirmation() {
+    // Prevent duplicate modals
+    if (document.querySelector(".modal-overlay")) return;
+
+    // Create confirmation box elements
+    let modal = document.createElement("div");
+    modal.innerHTML = `
+        <div class="logout-modal">
+            <p>Are you sure you want to logout?</p>
+            <button id="confirm-logout">Yes</button>
+            <button id="cancel-logout">No</button>
+        </div>
+    `;
+    modal.classList.add("modal-overlay");
+
+    // Append to body
+    document.body.appendChild(modal);
+
+    // Add event listeners
+    document.getElementById("confirm-logout").addEventListener("click", function () {
+        window.location.href = "../Login/login.html"; // Redirect to login
+    });
+
+    document.getElementById("cancel-logout").addEventListener("click", function () {
+        modal.remove(); // Close modal
+    });
+}

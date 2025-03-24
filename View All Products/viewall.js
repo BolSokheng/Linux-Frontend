@@ -1,7 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.querySelector('.row');
 
-    // Global products array
+    const logoutButton = document.querySelector("#logoutbtn");
+
+    if (logoutButton) {
+        logoutButton.addEventListener("click", function () {
+            showLogoutConfirmation();
+        });
+    }
+
+    function showLogoutConfirmation() {
+        // Prevent duplicate modals
+        if (document.querySelector(".modal-overlay")) return;
+
+        // Create modal overlay
+        let modal = document.createElement("div");
+        modal.classList.add("modal-overlay");
+
+        modal.innerHTML = `
+            <div class="logout-modal">
+                <p>Are you sure you want to logout?</p>
+                <div class="logout-buttons">
+                    <button id="confirm-logout" class="btn-confirm">Yes</button>
+                    <button id="cancel-logout" class="btn-cancel">No</button>
+                </div>
+            </div>
+        `;
+
+        // Append modal to the body
+        document.body.appendChild(modal);
+
+        // Event listeners for buttons
+        document.getElementById("confirm-logout").addEventListener("click", function () {
+            window.location.href = "../Login/login.html"; // Redirect to login
+        });
+
+        document.getElementById("cancel-logout").addEventListener("click", function () {
+            modal.remove(); // Close modal
+        });
+    }
+    
     const products = [
         { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
         { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
@@ -19,6 +57,35 @@ document.addEventListener("DOMContentLoaded", function () {
         { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
         { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
     ];
+
+    function showLogoutConfirmation() {
+        // Prevent duplicate modals
+        if (document.querySelector(".modal-overlay")) return;
+    
+        // Create confirmation box elements
+        let modal = document.createElement("div");
+        modal.innerHTML = `
+            <div class="logout-modal">
+                <p>Are you sure you want to logout?</p>
+                <button id="confirm-logout">Yes</button>
+                <button id="cancel-logout">No</button>
+            </div>
+        `;
+        modal.classList.add("modal-overlay");
+    
+        // Append to body
+        document.body.appendChild(modal);
+    
+        // Add event listeners
+        document.getElementById("confirm-logout").addEventListener("click", function () {
+            window.location.href = "../Login/login.html"; // Redirect to login
+        });
+    
+        document.getElementById("cancel-logout").addEventListener("click", function () {
+            modal.remove(); // Close modal
+        });
+    }
+    
 
     // Modify the function to accept productID
     function createProductColumn(stock, imageUrl, productName, unitPrice, productID) {

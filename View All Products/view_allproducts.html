@@ -14,15 +14,36 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../View All Products/view_allproducts.css">
-    <link rel="stylesheet" href="../Navbar/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
     <div class="section">
         <div class="wrapper">
-            <div id="navbar-container"></div>
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <img src="../IMAGES/rupppng.png" alt="">
+                    <h5>Stock Management System</h5>
+                </div>
 
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="../Dashboard/dashboard.html"><i class="fa-solid fa-boxes-stacked" style="margin-right: 15px;"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="../Export All Products/export_allproducts.html"><i class="fa-solid fa-arrow-up-from-bracket" style="margin-right: 15px;"></i>Export
+                            Products</a>
+                    </li>
+                    <li>
+                        <a href="../View All Products/view_allproducts.html"><i class="fa-solid fa-boxes-packing" style="margin-right: 15px;"></i>View
+                            Products</a>
+                    </li>
+                </ul>
+
+                <button type="submit"><i class="fa-solid fa-circle-xmark"
+                        style="margin-right: 10px; color:red;"></i>Logout</button>
+
+            </nav>
 
             <div class="showproducts">
                 <div class="titile">
@@ -42,7 +63,7 @@
                                     <div class="modal-body">
                                         
                                     </div>
-
+r
                                     <div class="modal-footer">
                                         <!-- Buttons will be added dynamically here -->
                                     </div>
@@ -63,7 +84,6 @@
     </div>
     
     <script src="viewall.js"></script>
-    <script src="../Navbar/navbar.js"></script>
 </body>
 
 </html>

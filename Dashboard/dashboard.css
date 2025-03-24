@@ -122,14 +122,12 @@ padding: 10px;
 font-weight: bold;
 border: 3px solid white;
 }
+
 #sidebar button:hover{
 background: #006ABD;
 color: white;
 border: 3px solid #006ABD;;
 }
-
-
-
 
 #prodct-container{
 display: flex;
@@ -209,9 +207,11 @@ h3{
 .fa-circle-xmark {
     float: inline-end;
 }
+
 .fa-circle-xmark:hover{
    color: #999;
 }
+
 h3{
     padding-top: 10px;
 }

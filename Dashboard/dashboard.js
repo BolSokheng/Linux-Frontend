@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
   const products = [
-    { name: "Centella Sunscreen", quantity: 160 },
-    { name: "Centella Sunscreen", quantity: 160 },
-    { name: "IUNIK Sunscreen", quantity: 143},
-    { name: "IUNIK Sunscreen", quantity: 143 },
-    { name: "IUNIK Sunscreen", quantity: 143 },
-    { name: "IUNIK Sunscreen", quantity: 143 },
+    { name: "Centella Sunscreen", quantity: 160 ,img:"../IMAGES/centella.png"},
+    { name: "Centella Sunscreen", quantity: 160 ,img:"../IMAGES/centella.png"},
+    { name: "IUNIK Sunscreen", quantity: 143,img:"../IMAGES/centella.png"},
+    { name: "IUNIK Sunscreen", quantity: 143,img:"../IMAGES/centella.png" },
+    { name: "IUNIK Sunscreen", quantity: 143,img:"../IMAGES/centella.png" },
+    { name: "IUNIK Sunscreen", quantity: 143 ,img:"../IMAGES/centella.png"},
   ];
    
   const productContainer = document.getElementById("product-container");
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const card = `
       <div class="col-6 col-md-3 col-lg-2"> 
         <div class="card text-center p-2">
-          <img src="https://via.placeholder.com/60" class="card-img-top mx-auto" alt="${product.name}">
+          <img src="${product.img}" class="card-img-top mx-auto" alt="${product.name}">
           <div class="card-body p-1">
             <h6 class="card-title">${product.name}</h6>
             <p class="card-text text-success">Imported: ${product.quantity}</p>

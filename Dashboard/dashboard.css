@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -123,13 +122,12 @@ padding: 10px;
 font-weight: bold;
 border: 3px solid white;
 }
+
 #sidebar button:hover{
 background: #006ABD;
 color: white;
 border: 3px solid #006ABD;;
 }
-
-
 
 #prodct-container{
 display: flex;
@@ -174,7 +172,7 @@ align-items: center;
     padding: 15px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     width: 350px;
-    display: none;
+    /* display: none; */
 }
 .head{
     padding-bottom: 20px;
@@ -204,18 +202,21 @@ h3{
     padding: 15px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     width: 350px;
-    display: none;
+    /* display: none; */
 }
 .fa-circle-xmark {
     float: inline-end;
 }
+
 .fa-circle-xmark:hover{
    color: #999;
 }
+
 h3{
     padding-top: 10px;
 }
-.button{
+
+.export-button{
     text-align: center;
     padding-top: 10px;
 }

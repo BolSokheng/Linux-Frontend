@@ -1,4 +1,7 @@
-const API_URL = "http://localhost:8080/Linux_backend/api/get_product.php";
+//const API_URL = "http://localhost:8081/Linux_backend/api/get_product.php";
+
+const API_URL= "http://localhost/Linux_backend/api/get_product.php";
+console.log(API_URL);
 
 // Function to fetch products from the API
 async function fetchProducts() {
@@ -14,6 +17,7 @@ async function fetchProducts() {
             displayNoProductsFound(); // Handle case when no products are returned
         }
     } catch (error) {
+    
         console.error("Error fetching products:", error);
         displayError(error); // Display a message in case of an error
     }
@@ -50,7 +54,7 @@ function createProductCard(product) {
     productCard.innerHTML = `
         <div class="product-card">
             <span class="stock-label ${getStockClass(product.stockQty)}">Stock: ${product.stockQty}</span>
-            <img src="../UploadImg/${product.img}" class="img-fluid" alt="${product.Pname}">
+            <img src="${product.img}" class="img-fluid" alt="${product.Pname}">
             <div class="text">
                 <h5>${product.Pname}</h5>
                 <p>Unit Price: $${product.unitPrice}</p>

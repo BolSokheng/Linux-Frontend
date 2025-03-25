@@ -1,24 +1,25 @@
+const API_BASE = "http://localhost/Linux_backend/api/";
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.querySelector('.row');
 
     // Global products array
-    const products = [
-        { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-        { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    ];
+    // const products = [
+    //     { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    //     { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
+    // ];
 
     // Modify the function to accept productID
     function createProductColumn(stock, imageUrl, productName, unitPrice, productID) {
@@ -75,29 +76,62 @@ document.addEventListener("DOMContentLoaded", function () {
         col.appendChild(productCard);
         return col;
     }
-
+  
     // Add product data, including the ID (using the index or a unique value)
     function addProducts() {
-        products.forEach((product, index) => {
-            const productColumn = createProductColumn(
-                product.stock,
-                product.imageUrl,
-                product.productName,
-                product.unitPrice,
-                index + 1 // Pass the index + 1 as the product ID (this can be replaced with actual unique IDs)
-            );
-            container.appendChild(productColumn);
+        fetch(API_BASE + "get_product.php").then(res=>res.json()).then(data=>{
+            data.forEach((product,index) => {
+                const productColumn = createProductColumn(
+                    product.stockQty,
+                    product.img,
+                    product.Pname,
+                    product.unitPrice,
+                    index+1
+                );
+              
+                container.appendChild(productColumn);
+            
+            });
+      //      console.log(data);
         });
     }
-
+    //function for update stock 
+    function updateStock(pId, addedStockQty) {
+        const formData = new FormData();
+        formData.append("pId", pId);
+        formData.append("stockQty", addedStockQty);
+    
+        fetch(API_BASE + "update_stock.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.json())
+        .then(response => {
+            alert(response.message || response.error);
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Failed to update stock.");
+        });
+    }
     // Modify openModal to accept productID and products array
     function openModal(title, productID) {
         const modalTitle = document.getElementById('modalTitle');
         const modalBody = document.querySelector('.modal-body');
         const modalFooter = document.querySelector('.modal-footer');
         const productCard = document.querySelector(`.product-card[data-id='${productID}']`);
-        const product = products[productID - 1];
-    
+
+        fetch(API_BASE + "get_product.php").then(res=>res.json())
+        .then(data=>{
+            console.log("Fetched Data:", data); 
+            const product = data.find(p=>p.pId===String(productID));
+           
+            if(!product){
+                alert("Product not found");
+                return;
+            }
+  
         // Clear previous content
         modalBody.innerHTML = '';
         modalFooter.innerHTML = '';
@@ -122,9 +156,11 @@ document.addEventListener("DOMContentLoaded", function () {
     
         // Product image
         const productImage = document.createElement('img');
-        productImage.src = product.imageUrl;
+        productImage.src =product.img;
+        productImage.style.width = 'auto';
+        productImage.style.height = '150px';
         productImage.alt = title;
-        productImage.classList.add('modal-product-image'); //Add class for media query
+      //  productImage.classList.add('modal-product-image'); //Add class for media query
     
         // Product details
         const productDetails = document.createElement('div');
@@ -139,10 +175,10 @@ document.addEventListener("DOMContentLoaded", function () {
         price.innerHTML = `<strong>Unit price:</strong> <span style="color:black; font-weight: bold;font-size:22px">${product.unitPrice}$</span>`;
     
         // Get the updated stock from the products array
-        const updatedStock = product.stock;
+        const updatedStock = product.stockQty;
     
         const stockInfo = document.createElement('p');
-        stockInfo.innerHTML = `<strong>In stock:</strong> <span id="modal-stock-${productID}" style="color:black; font-weight: bold;font-size:22px">${updatedStock}</span>`;
+        stockInfo.innerHTML = `<strong>In stock:</strong> <span id="modal-stock-${product.pId}" style="color:black; font-weight: bold;font-size:22px">${updatedStock}</span>`;
     
         productDetails.appendChild(productIDElement);
         productDetails.appendChild(price);
@@ -211,15 +247,17 @@ document.addEventListener("DOMContentLoaded", function () {
         updateButton.style.borderRadius = '15px';
         updateButton.style.cursor = 'pointer';
         updateButton.style.fontSize = '18px';
-    
-    
+  
+       
         updateButton.addEventListener('click', () => {
+          
             const newStock = parseInt(stockInput.value);
             // Get the updated stock from the products array
-            const updatedStock = products[productID - 1].stock + newStock;
+            updateStock(product.pId, newStock); 
+            const updatedStock = parseInt(product.stockQty) + newStock;
     
             // Update the stock in the products array
-            products[productID - 1].stock = updatedStock;
+            product.stockQty = updatedStock;
     
             // Update the stock label text
             const stockLabel = document.querySelector(`.product-card[data-id='${productID}'] .stock-label`);
@@ -269,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const modalElement = document.getElementById('productModal');
         const modalInstance = new bootstrap.Modal(modalElement);
         modalInstance.show();
-    
+    });
     }
 
     addProducts();

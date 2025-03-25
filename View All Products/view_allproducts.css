@@ -688,7 +688,7 @@ ul ul a {
         /* background-color: blue; */
     }
 
-    .modal-body div {
+    .modal-body div{
         /* margin-bottom: 10px;     */
         /* background-color:black; */
         /* display: flex; */
@@ -737,9 +737,9 @@ ul ul a {
         margin-bottom: 10px;
     }
 
-    .modal-product-image {
-        /*width: 150px;  Adjust as needed*/
-        /*height: auto;  Maintain aspect ratio*/
+    .modal-product-image{
+        width: 50px;  /*Adjust as needed*/
+        height: auto; /* Maintain aspect ratio */
     }
 
     .modal-product-details {

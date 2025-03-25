@@ -121,6 +121,79 @@ a:focus {
     margin: 5px;
 }
 
+.form-label{
+    margin-top: 10px;
+}
+
+#inputBoxContainer .modal-content {
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+}
+
+#inputBoxContainer .modal-header {
+    background: #cde6fc;
+    border-radius: 20px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+#inputBoxContainer .modal-title {
+    font-weight: bold;
+    color: #333;
+    
+}
+
+#inputBoxContainer .modal-body {
+    padding: 10px;
+    
+}
+
+#inputBoxContainer .modal-footer {
+    
+    padding: 15px;
+}
+
+#inputBoxContainer .modal-footer .btn {
+    width: 110px;
+    font-weight: 600;
+}
+
+#inputBoxContainer .btn-success {
+    background: #88C053;
+    border-radius: 20px;
+    border: none;
+}
+
+#inputBoxContainer .btn-success:hover {
+    background: #71a045;
+}
+
+#inputBoxContainer .btn-secondary {
+    background: #006ABD;
+    border-radius: 20px;
+    border: none;
+}
+
+#inputBoxContainer .btn-secondary:hover {
+    background: #005698;
+}
+
+#inputBoxContainer input.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px 40px;
+    font-size: 16px;
+    
+}
+
+#inputBoxContainer input.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
 /* ---------------------------------------------------
 SIDEBAR STYLE
 ----------------------------------------------------- */

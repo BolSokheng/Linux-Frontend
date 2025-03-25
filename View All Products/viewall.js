@@ -39,6 +39,14 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.remove(); // Close modal
         });
     }
+
+
+    const addButton = document.getElementById("addMoreBtn");
+    const inputBoxModal = new bootstrap.Modal(document.getElementById("inputBoxContainer"));
+
+    addButton.addEventListener("click", function () {
+        inputBoxModal.show();
+    });
     
     const products = [
         { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },

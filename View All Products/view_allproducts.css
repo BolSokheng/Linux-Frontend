@@ -54,6 +54,145 @@ a:focus {
     border: none;
 }
 
+.active{
+    background: #fff;
+    width: 100%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: #006ABD;
+  }
+
+  
+/* Logout Confirmation Box */
+.logout-modal {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logout-modal p {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.logout-modal button {
+    padding: 8px 15px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#confirm-logout {
+    background-color: rgb(21, 108, 208);
+    color: white;
+}
+
+#cancel-logout {
+    background-color: gray;
+    color: white;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.logout-buttons button {
+    margin: 5px;
+}
+
+.form-label{
+    margin-top: 10px;
+}
+
+#inputBoxContainer .modal-content {
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+}
+
+#inputBoxContainer .modal-header {
+    background: #cde6fc;
+    border-radius: 20px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+#inputBoxContainer .modal-title {
+    font-weight: bold;
+    color: #333;
+    
+}
+
+#inputBoxContainer .modal-body {
+    padding: 10px;
+    
+}
+
+#inputBoxContainer .modal-footer {
+    
+    padding: 15px;
+}
+
+#inputBoxContainer .modal-footer .btn {
+    width: 110px;
+    font-weight: 600;
+}
+
+#inputBoxContainer .btn-success {
+    background: #88C053;
+    border-radius: 20px;
+    border: none;
+}
+
+#inputBoxContainer .btn-success:hover {
+    background: #71a045;
+}
+
+#inputBoxContainer .btn-secondary {
+    background: #006ABD;
+    border-radius: 20px;
+    border: none;
+}
+
+#inputBoxContainer .btn-secondary:hover {
+    background: #005698;
+}
+
+#inputBoxContainer input.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px 40px;
+    font-size: 16px;
+    
+}
+
+#inputBoxContainer input.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
 
 /* ---------------------------------------------------
 SIDEBAR STYLE

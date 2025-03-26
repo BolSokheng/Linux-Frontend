@@ -20,6 +20,80 @@ document.addEventListener("DOMContentLoaded", function () {
     //     { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
     //     { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
     // ];
+    const logoutButton = document.querySelector("#logoutbtn");
+
+    if (logoutButton) {
+        logoutButton.addEventListener("click", function () {
+            showLogoutConfirmation();
+        });
+    }
+
+    function showLogoutConfirmation() {
+        // Prevent duplicate modals
+        if (document.querySelector(".modal-overlay")) return;
+
+        // Create modal overlay
+        let modal = document.createElement("div");
+        modal.classList.add("modal-overlay");
+
+        modal.innerHTML = `
+            <div class="logout-modal">
+                <p>Are you sure you want to logout?</p>
+                <div class="logout-buttons">
+                    <button id="confirm-logout" class="btn-confirm">Yes</button>
+                    <button id="cancel-logout" class="btn-cancel">No</button>
+                </div>
+            </div>
+        `;
+
+        // Append modal to the body
+        document.body.appendChild(modal);
+
+        // Event listeners for buttons
+        document.getElementById("confirm-logout").addEventListener("click", function () {
+            window.location.href = "../Login/login.html"; // Redirect to login
+        });
+
+        document.getElementById("cancel-logout").addEventListener("click", function () {
+            modal.remove(); // Close modal
+        });
+    }
+
+
+    const addButton = document.getElementById("addMoreBtn");
+    const inputBoxModal = new bootstrap.Modal(document.getElementById("inputBoxContainer"));
+
+    addButton.addEventListener("click", function () {
+        inputBoxModal.show();
+    });
+    function showLogoutConfirmation() {
+        // Prevent duplicate modals
+        if (document.querySelector(".modal-overlay")) return;
+    
+        // Create confirmation box elements
+        let modal = document.createElement("div");
+        modal.innerHTML = `
+            <div class="logout-modal">
+                <p>Are you sure you want to logout?</p>
+                <button id="confirm-logout">Yes</button>
+                <button id="cancel-logout">No</button>
+            </div>
+        `;
+        modal.classList.add("modal-overlay");
+    
+        // Append to body
+        document.body.appendChild(modal);
+    
+        // Add event listeners
+        document.getElementById("confirm-logout").addEventListener("click", function () {
+            window.location.href = "../Login/login.html"; // Redirect to login
+        });
+    
+        document.getElementById("cancel-logout").addEventListener("click", function () {
+            modal.remove(); // Close modal
+        });
+    }
+    
 
     // Modify the function to accept productID
     function createProductColumn(stock, imageUrl, productName, unitPrice, productID) {
@@ -76,7 +150,20 @@ document.addEventListener("DOMContentLoaded", function () {
         col.appendChild(productCard);
         return col;
     }
-  
+  function addMoreProduct(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    fetch(API_BASE + "add_product.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(response => {
+        alert(response.message || response.error);
+        window.location.reload();
+    });
+  }
     // Add product data, including the ID (using the index or a unique value)
     function addProducts() {
         fetch(API_BASE + "get_product.php").then(res=>res.json()).then(data=>{

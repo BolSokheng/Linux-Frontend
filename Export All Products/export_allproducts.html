@@ -54,7 +54,7 @@
                         </tr>
                         </thead>
                         <tbody id="cart-body">
-                        <!-- Selected items will appear here -->
+                     
                         </tbody>
                     </table>
                     <p>Total Items: <span id="total-items">0</span></p>
@@ -69,7 +69,7 @@
         </div>
         </div>
             <!-- Order Summary (Cart) -->
-            <div class="container py-4 w-100">
+            <div class="container py-4 w-100" >
               <div class="order-container">
                 <div class="card p-3">
                   <h4>Order Summary</h4>
@@ -84,12 +84,20 @@
                     </thead>
                     <tbody id="cart-body">
                       <!-- Selected items will appear here -->
+                                    
+                <form id="exportForm" method="POST" style="border:none">
+                  <div class="export-list" style="width: 100%;margin-top: 70px; border: 1px solid gray; padding: 20px;display: block;"></div>
+                  <button type="submit">submit Export</button>
+              </form>
+
+
+
                     </tbody>
                   </table>
-                  <p>Total Items: <span id="total-items">0</span></p>
+                  <!-- <p>Total Items: <span id="total-items">0</span></p>
                   <button class="btn btn-primary" id="submit-order">
                     Submit
-                  </button>
+                  </button> -->
                 </div>
               </div>
             </div>
@@ -99,25 +107,21 @@
     </div>
     <!-- Export Report Modal -->
     <div class="modal fade" id="exportReportModal" tabindex="-1">
+    
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Export Report</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
             <table class="table">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Qty</th>
+                  <th>ID</th><th>Name</th> <th>Qty</th>
                 </tr>
               </thead>
+
               <tbody id="export-report-body">
                 <!-- Order details go here -->
               </tbody>
@@ -131,10 +135,83 @@
           </div>
         </div>
       </div>
+
     </div>
     <!-- close -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../Navbar/navbar.js"></script>
     <script src="../Export All Products/export_allproducts.js"></script>
+
+   
+    <script>
+
+function createProductCard(product) {
+    const productCard = document.createElement("div");
+    productCard.classList.add("col-12", "col-sm-6", "col-md-4");
+
+    productCard.innerHTML = `
+        <div class="product-card"  data-id="${product.pId}">
+            <span class="stock-label ${getStockClass(product.stockQty)}">Stock: ${product.stockQty}</span>
+            <img src="${product.img}" class="img-fluid" alt="${product.Pname}" style="height: 200px;">
+            <div class="text">
+                <h5>${product.Pname}</h5>
+                <p>Unit Price: $${product.unitPrice}</p>
+            </div>
+        </div>
+    `;
+    productCard.addEventListener("click", function () {
+        addToExportList(product);
+    });
+    return productCard;
+}
+
+
+//add product to export list 
+      function addToExportList(product) {
+          let exportList = document.querySelector(".export-list");
+          // Check if product already exists in the export list
+          let existingProduct = [...exportList.querySelectorAll(".product-card")].find(item =>
+          item.pId === String(product.pId)
+          
+      );
+   //   console.log(item.getAttribute("data-id"));
+      console.log(product.pId);
+          if (existingProduct) {
+              // If product exists, focus on input and increment quantity
+              let qtyInput = existingProduct.querySelector("input[name='exportQty']");
+              let newQty = parseInt(qtyInput.value) + 1;
+              if(newQty<= product.stockQty){
+                  qtyInput.value = newQty;
+              }else{
+                  alert("You can't export more than stock quantity");
+              }
+                  qtyInput.focus();
+          } 
+          else {
+              // Create new product item
+              let productItem = document.createElement("div");
+              productItem.classList.add("product-list");
+              productItem.style.cssText = "width: 500px;border: 1px solid gray; display: flex; gap: 20px; align-items: center; padding: 10px;";
+      
+              productItem.innerHTML = `
+              <input type="hidden" name="pId[]" value="${product.pId}">
+                  <img src="${product.img}" alt="" style="width: 60px">
+                  <h4>${product.Pname}</h4>
+                  <p>Unit Price: $${product.unitPrice}</p>
+                  <label for="exportQty">ExportQty</label>
+                  <input type="number" name="exportQty[]" value="1" min="1" max="${product.stockQty}" required style="width: 100px">
+                   <button class="remove-btn" style="background: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">Remove</button>
+              `;
+              productItem.querySelector(".remove-btn").addEventListener("click", function () {
+                  productItem.remove();
+              });
+              exportList.appendChild(productItem);
+          }
+        
+      }
+
+          document.getElementById('exportForm').addEventListener("submit", exportProduct);
+      </script>
+      
   </body>
 </html>

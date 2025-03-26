@@ -1,8 +1,6 @@
-//const API_URL = "http://localhost:8081/Linux_backend/api/get_product.php";
 
 const API_URL= "http://localhost/Linux_backend/api/get_product.php";
-console.log(API_URL);
-
+const API_BASE = "http://localhost/Linux_backend/api/";
 // Function to fetch products from the API
 async function fetchProducts() {
     try {
@@ -46,23 +44,10 @@ function displayProducts(products) {
     });
 }
 
-// Function to create a product card element dynamically
-function createProductCard(product) {
-    const productCard = document.createElement("div");
-    productCard.classList.add("col-12", "col-sm-6", "col-md-4");
 
-    productCard.innerHTML = `
-        <div class="product-card">
-            <span class="stock-label ${getStockClass(product.stockQty)}">Stock: ${product.stockQty}</span>
-            <img src="${product.img}" class="img-fluid" alt="${product.Pname}">
-            <div class="text">
-                <h5>${product.Pname}</h5>
-                <p>Unit Price: $${product.unitPrice}</p>
-            </div>
-        </div>
-    `;
-    return productCard;
-}
+
+// Function to create a product card element dynamically
+
 
 // Function to determine stock label class
 function getStockClass(stockQty) {
@@ -71,5 +56,83 @@ function getStockClass(stockQty) {
     return "stock-low";
 }
 
+//function to export product
+function exportProduct(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    fetch(API_BASE + "export_product.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(response => {
+        alert(response.message || response.error);
+        window.location.reload();
+    });
+}
+
+
+//export product
+
+//function add product to cart
+// function addToCart(product){
+//  //   let card = this.closest(".product");
+//       let ExportList = document.getElementById("export-report-body");
+//       let existingProduct = [...ExportList.querySelectorAll(".product-card")].find(item =>
+//         item.getAttribute("data-id") === String(product.pId)
+//     );
+//     if (existingProduct) {
+//         // If product exists, focus on input and increment quantity
+//         let qtyInput = existingProduct.querySelector("input[name='exportQty']");
+//         let newQty = parseInt(qtyInput.value) + 1;
+//         if(newQty<= product.stockQty){
+//             qtyInput.value = newQty;
+//         }else{
+//             alert("You can't export more than stock quantity");
+//         }
+//             qtyInput.focus();
+//     } else{
+
+//     }
+// }
+// function updateCart() {
+//     cartBody.innerHTML = "";
+//     let total = 0;
+//     cart.forEach(item => {
+//         total += item.qty;
+//         cartBody.innerHTML += `
+//             <tr>
+//                 <td>${item.id}</td>
+//                 <td>${item.name}</td>
+//                 <td>${item.qty}</td>
+//                 <td><button class="btn btn-danger btn-sm remove-item" data-id="${item.id}">✖</button></td>
+//             </tr>`;
+//     });
+//     totalItems.innerText = total;
+
+//     // Remove item event listener
+//     document.querySelectorAll(".remove-item").forEach(button => {
+//         button.addEventListener("click", function () {
+//             let productId = this.getAttribute("data-id");
+//             cart = cart.filter(item => item.pId !== productId);
+//             updateCart();
+//         });
+//     });
+// }
+
+// function addToCart(id){
+//     let cart = [];
+//     fetch(API_BASE + "get_product.php").then(res=>res.json())
+//     .then(data=>{
+//         let existingItem = data.find(p=>p.pId===String(id));
+//     if (existingItem) {
+//         existingItem.stockQty += 10;
+//     } else {
+//         cart.push({ id: pId, name: Pname, qty: 10 });
+//     }
+//     updateCart(cart);
+// });
+// }
 // Fetch products when the page loads
 document.addEventListener("DOMContentLoaded", fetchProducts);

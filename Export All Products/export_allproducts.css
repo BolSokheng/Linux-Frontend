@@ -123,6 +123,8 @@ SIDEBAR STYLE
   border: 3px solid #006abd;
 }
 .product-card {
+  transition: .3s;
+  border: 1px solid rgba(128, 128, 128, 0.293);
   background: #ffffff;
   padding: 15px;
   border-radius: 10px;
@@ -130,11 +132,17 @@ SIDEBAR STYLE
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
 }
+.product-card:hover{
+  transition: .3s;
+  scale:  1.03;
+  cursor: pointer;
+}
 .text {
+  margin-top: 10px;
   background-color: #c4dff2;
   border-radius: 10px;
   padding: 4px;
-  box-shadow: 0 4px 8px rgb(168, 128, 128);
+  /* box-shadow: 0 4px 8px rgb(168, 128, 128); */
 }
 .stock-label {
   position: absolute;

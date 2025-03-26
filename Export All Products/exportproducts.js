@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".remove-item").forEach(button => {
             button.addEventListener("click", function () {
                 let productId = this.getAttribute("data-id");
-                cart = cart.filter(item => item.id !== productId);
+                cart = cart.filter(item => item.pId !== productId);
                 updateCart();
             });
         });

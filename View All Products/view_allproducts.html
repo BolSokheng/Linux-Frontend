@@ -96,31 +96,35 @@
                     <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
+                    <form id="addProductForm" enctype="multipart/form-data">
+                        <div class="mb-3">   
                             <label class="form-label">ID</label>
                             <input type="text" class="form-control" value="Auto" disabled >
                             <label class="form-label">Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Name" name="Pname">
+                            <input type="text" class="form-control" placeholder="Enter Name" name="Pname" required>
                             <label class="form-label">Unit Price</label>
-                            <input type="text" class="form-control" placeholder="Enter Price" name="unitPrice" step="0.01" >
+                            <input type="text" class="form-control" placeholder="Enter Price" name="unitPrice" step="0.01" required >
                             <label class="form-label">Stock</label>
-                            <input type="text" class="form-control" placeholder="Enter stock Qty" name="stockQty">
+                            <input type="text" class="form-control" placeholder="Enter stock Qty" name="stockQty" required>
                             <label class="form-label">Select File:</label>
-                            <input type="file" class="form-control" name="img">
+                            <input type="file" class="form-control" name="img" required>
                         </div>
                      
-                    </form>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success" onclick="addMoreProduct(event)">Confirm</button>
+                    <button type="submit" class="btn btn-success">Confirm</button>
                 </div>
+            </form>
             </div>
         </div>
     </div>
     
     <script src="viewall.js"></script>
+    <script>
+        document.getElementById("addProductForm").addEventListener("submit", addMoreProduct);
+    </script>
 </body>
 
 </html>

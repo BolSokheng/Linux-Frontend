@@ -1,27 +1,25 @@
 const API_BASE = "http://localhost/Linux_backend/api/";
+
+//function for add more product
+function addMoreProduct(event) {
+    console.log("add form work");
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    fetch(API_BASE + "add_product.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.json())
+    .then(response => {
+        alert(response.message || response.error);
+        window.location.reload();
+    });
+  }
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.querySelector('.row');
-
-    // Global products array
-    // const products = [
-    //     { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 200, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 20, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    //     { stock: 50, imageUrl: '../IMAGES/download (1).jpg', productName: 'Centella Serum', unitPrice: 10 },
-    // ];
+    
     const logoutButton = document.querySelector("#logoutbtn");
-
     if (logoutButton) {
         logoutButton.addEventListener("click", function () {
             showLogoutConfirmation();
@@ -59,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
     const addButton = document.getElementById("addMoreBtn");
     const inputBoxModal = new bootstrap.Modal(document.getElementById("inputBoxContainer"));
 
@@ -93,8 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.remove(); // Close modal
         });
     }
-    
-
     // Modify the function to accept productID
     function createProductColumn(stock, imageUrl, productName, unitPrice, productID) {
         const col = document.createElement('div');
@@ -128,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const productImage = document.createElement('img');
         productImage.src = imageUrl;
+        productImage.style.height = '200px';
         productImage.classList.add('product-img');
         productImage.alt = 'Product';
 
@@ -150,20 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
         col.appendChild(productCard);
         return col;
     }
-  function addMoreProduct(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
 
-    fetch(API_BASE + "add_product.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(res => res.json())
-    .then(response => {
-        alert(response.message || response.error);
-        window.location.reload();
-    });
-  }
     // Add product data, including the ID (using the index or a unique value)
     function addProducts() {
         fetch(API_BASE + "get_product.php").then(res=>res.json()).then(data=>{
@@ -211,9 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         fetch(API_BASE + "get_product.php").then(res=>res.json())
         .then(data=>{
-            console.log("Fetched Data:", data); 
             const product = data.find(p=>p.pId===String(productID));
-           
             if(!product){
                 alert("Product not found");
                 return;
@@ -335,7 +316,6 @@ document.addEventListener("DOMContentLoaded", function () {
         updateButton.style.cursor = 'pointer';
         updateButton.style.fontSize = '18px';
   
-       
         updateButton.addEventListener('click', () => {
           
             const newStock = parseInt(stockInput.value);

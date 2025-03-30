@@ -207,18 +207,25 @@ SIDEBAR STYLE
     min-height: 96vh;
 }
 
+.back-sidebar{
+    min-width: 250px;
+    max-width: 250px;
+}
 #sidebar {
+    position: fixed;
     min-width: 250px;
     max-width: 250px;
     background: #C4DFF2;
     color: #3d3d3d;
     transition: all 0.3s;
-    margin-top: 0.4%;
+    /* margin-top: 2%; */
+    margin-top:4vh;
     height: 96vh;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    /* Adds a soft black shadow */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Adds a soft black shadow */
+    
+
 }
 
 #sidebar.active {
@@ -545,27 +552,11 @@ ul ul a {
     height: auto;
     object-fit: cover;
     display: block;
-    /* margin: 0 auto; */
-    /* background-color: red; */
 }
-/* 
-.modal-body div {
-    margin-bottom: 10px;    
-    background-color:black;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-} */
-
-
 .modal-body strong {
-    /* display:end; */
     width: 100%;
     color: black;
-    /* font-weight: bold; */
-    /* background-color: #4CAF50; */
     margin-left: 80px;
-    /* margin-top: 400px !important; */
     font-size: 22px;
 }
 
@@ -580,10 +571,6 @@ ul ul a {
 
 }
 
-/* .modal-header .modal-title {
-    font-size: 50px !important;
-} */
-
 
 .modal-outer-container {
     padding: 10px;
@@ -597,12 +584,6 @@ ul ul a {
     padding: 10px;
     margin-bottom: 10px;
 }
-
-/* .modal-product-image {
-    width: 150px;
-    height: auto;
-} */
-
 .modal-product-details {
     margin-top: 50px;
     flex: 1;

@@ -4,63 +4,56 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Export All Products</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"  rel="stylesheet"  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
+    <script  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"  crossorigin="anonymous" ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../Navbar/navbar.css" />
-    <link
-      rel="stylesheet"
-      href="../Export All Products/export_allproducts.css"
-    />
+    <link rel="stylesheet" href="../Export All Products/export_allproducts.css"/>
   </head>
   <body>
     <div class="wrapper">
         <div id="navbar-container"></div>
+
         <div class="content">
             <div class="container mt-4">
             <div class="row g-4">
                 <h2 class="text-center mb-4">Export Products</h2>
                 <!-- Product Items -->
-                <div id="product-container" class="row g-4">
+                <div id="product-container" class="row g-4" style="padding-right: 100px;">
                 <!-- Products will be dynamically injected here -->
                 </div>
+
+
                 <!-- Order Summary (Cart) -->
-                <div class="container py-4 w-100">
+                <div class="container py-4 w-100 Order-summary">
                 <div class="order-container">
                     <div class="card p-3">
-                    <h4>Order Summary</h4>
-                    <table class="table">
+                    <h4 class="text-center fs-5 fw-bold" style="color:#0b5ed7">Order Summary</h4>
+
+                   
+
+                      <table class="table" >
                         <thead class="bg-">
-                        <tr>
-                            <th>ID</th>
+                        <tr style="font-size: 15px" >
+                            <th style="width: 40px">ID</th>
                             <th>Name</th>
                             <th>Qty</th>
-                            <th>Action</th>
                         </tr>
                         </thead>
-                        <tbody id="cart-body">
-                     
-                        </tbody>
+
                     </table>
-                    <p>Total Items: <span id="total-items">0</span></p>
-                    <button class="btn btn-primary" id="submit-order">
-                        Submit
-                    </button>
+                    <form id="exportForm" method="POST" style="border:none">
+                      <div class="export-list" style="width: 100%;margin-top: 10px;display: block;height: 60vh;overflow-y: auto;">
+                        <!-- data post here  -->
+                      </div>
+                
+
+                      <div class="total-summary-submit mt-4" style="border-top: 1px solid gray">
+                      <p>Total Items: <span id="total-items">0</span></p>
+                    <button class="btn btn-primary" id="submit-order" type="submit">  Submit Export</button>
+                      </div>
+                      <!-- <button type="submit">submit Export</button> -->
+                  </form>
                     </div>
                 </div>
                 </div>
@@ -68,62 +61,47 @@
             </div>
         </div>
         </div>
-            <!-- Order Summary (Cart) -->
-            <div class="container py-4 w-100" >
-              <div class="order-container">
-                <div class="card p-3">
-                  <h4>Order Summary</h4>
-                  <table class="table">
-                    <thead class="bg-">
-                      <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Qty</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody id="cart-body">
-                      <!-- Selected items will appear here -->
-                                    
-                <form id="exportForm" method="POST" style="border:none">
-                  <div class="export-list" style="width: 100%;margin-top: 70px; border: 1px solid gray; padding: 20px;display: block;"></div>
-                  <button type="submit">submit Export</button>
-              </form>
 
-
-
-                    </tbody>
-                  </table>
-                  <!-- <p>Total Items: <span id="total-items">0</span></p>
-                  <button class="btn btn-primary" id="submit-order">
-                    Submit
-                  </button> -->
-                </div>
+        <div class="modal fade" id="ConfirmSubmit" tabindex="-1">
+          <div class="modal-dialog" >
+            <div class="modal-content" >
+              <div class="modal-header" >
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+              <h3 class="text-center">Confirm Export?</h3>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary rounded-3" id="cancel-btn">  Cancel </button>
+                <button class="btn btn-primary rounded-3" id="confirm-export" data-bs-dismiss="modal">Export</button>
               </div>
             </div>
           </div>
+    
         </div>
-      </div>
-    </div>
     <!-- Export Report Modal -->
     <div class="modal fade" id="exportReportModal" tabindex="-1">
     
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Export Report</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <!-- <div class="modal-content" >
+          <div class="modal-header d-block" >
+           <h3 class="text-center my-4 fw-bold"> Export Report</h3> 
+           <div class="mt-4">
+            <h6>Report No.03</h6>
+            <h6>Date : 2022-02-22</h6>  
           </div>
-          <div class="modal-body">
+      </div>
+         <div class="modal-body">
             <table class="table">
               <thead>
-                <tr>
-                  <th>ID</th><th>Name</th> <th>Qty</th>
-                </tr>
+                <tr ><th>ID</th><th>Name</th> <th>Qty</th></tr>
               </thead>
-
-              <tbody id="export-report-body">
-                <!-- Order details go here -->
+              <tbody id="export-report-body" >
+                <tr>
+                  <td>01</td>
+                  <td>Centella Sunscreen</td>
+                  <td>10</td>
+                </tr>
               </tbody>
             </table>
             <p>Total Items: <span id="export-total-items">0</span></p>
@@ -133,85 +111,19 @@
               Close
             </button>
           </div>
-        </div>
+        </div> -->
       </div>
-
     </div>
     <!-- close -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../Navbar/navbar.js"></script>
     <script src="../Export All Products/export_allproducts.js"></script>
-
-   
+    
     <script>
-
-function createProductCard(product) {
-    const productCard = document.createElement("div");
-    productCard.classList.add("col-12", "col-sm-6", "col-md-4");
-
-    productCard.innerHTML = `
-        <div class="product-card"  data-id="${product.pId}">
-            <span class="stock-label ${getStockClass(product.stockQty)}">Stock: ${product.stockQty}</span>
-            <img src="${product.img}" class="img-fluid" alt="${product.Pname}" style="height: 200px;">
-            <div class="text">
-                <h5>${product.Pname}</h5>
-                <p>Unit Price: $${product.unitPrice}</p>
-            </div>
-        </div>
-    `;
-    productCard.addEventListener("click", function () {
-        addToExportList(product);
-    });
-    return productCard;
-}
-
-
-//add product to export list 
-      function addToExportList(product) {
-          let exportList = document.querySelector(".export-list");
-          // Check if product already exists in the export list
-          let existingProduct = [...exportList.querySelectorAll(".product-card")].find(item =>
-          item.pId === String(product.pId)
-          
-      );
-   //   console.log(item.getAttribute("data-id"));
-      console.log(product.pId);
-          if (existingProduct) {
-              // If product exists, focus on input and increment quantity
-              let qtyInput = existingProduct.querySelector("input[name='exportQty']");
-              let newQty = parseInt(qtyInput.value) + 1;
-              if(newQty<= product.stockQty){
-                  qtyInput.value = newQty;
-              }else{
-                  alert("You can't export more than stock quantity");
-              }
-                  qtyInput.focus();
-          } 
-          else {
-              // Create new product item
-              let productItem = document.createElement("div");
-              productItem.classList.add("product-list");
-              productItem.style.cssText = "width: 500px;border: 1px solid gray; display: flex; gap: 20px; align-items: center; padding: 10px;";
-      
-              productItem.innerHTML = `
-              <input type="hidden" name="pId[]" value="${product.pId}">
-                  <img src="${product.img}" alt="" style="width: 60px">
-                  <h4>${product.Pname}</h4>
-                  <p>Unit Price: $${product.unitPrice}</p>
-                  <label for="exportQty">ExportQty</label>
-                  <input type="number" name="exportQty[]" value="1" min="1" max="${product.stockQty}" required style="width: 100px">
-                   <button class="remove-btn" style="background: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">Remove</button>
-              `;
-              productItem.querySelector(".remove-btn").addEventListener("click", function () {
-                  productItem.remove();
-              });
-              exportList.appendChild(productItem);
-          }
-        
-      }
-
-          document.getElementById('exportForm').addEventListener("submit", exportProduct);
-      </script>
-      
+ document.addEventListener("DOMContentLoaded", () => {
+        fetchProducts();
+        document.getElementById('exportForm').addEventListener("submit",CheckExportQty);
+});
+ </script>
   </body>
 </html>

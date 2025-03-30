@@ -2,7 +2,6 @@ const API_BASE = "http://localhost/Linux_backend/api/";
 
 //function for add more product
 function addMoreProduct(event) {
-    console.log("add form work");
     event.preventDefault();
     const formData = new FormData(event.target);
 
@@ -185,6 +184,10 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Failed to update stock.");
         });
     }
+
+
+
+
     // Modify openModal to accept productID and products array
     function openModal(title, productID) {
         const modalTitle = document.getElementById('modalTitle');
@@ -275,11 +278,19 @@ document.addEventListener("DOMContentLoaded", function () {
     
         const stockInput = document.createElement('input');
         stockInput.type = 'number';
-        stockInput.value = '0';
+        stockInput.value = ''; 
+        stockInput.placeholder = '0';
+        stockInput.min = '1'; 
         stockInput.style.width = '60px';
         stockInput.style.border = '2px solid black';
-        stockInput.classList.add('modal-stock-input');  //Add class for media query
-    
+        stockInput.classList.add('modal-stock-input');  
+
+        stockInput.addEventListener('input', function () {
+            if (stockInput.value < 1) {
+                stockInput.value = ''; 
+
+            }
+        });
         inputContainer.appendChild(stockLabel);
         inputContainer.appendChild(stockInput);
     
@@ -317,16 +328,20 @@ document.addEventListener("DOMContentLoaded", function () {
         updateButton.style.fontSize = '18px';
   
         updateButton.addEventListener('click', () => {
-          
+            
+            
+    if (!stockInput.value || isNaN(stockInput.value) || stockInput.value <= 0) {
+        alert('Please enter a valid stock quantity.'); 
+        stockInput.focus(); 
+        stockInput.style.borderColor = 'red'; 
+        return; 
+    }
             const newStock = parseInt(stockInput.value);
-            // Get the updated stock from the products array
             updateStock(product.pId, newStock); 
             const updatedStock = parseInt(product.stockQty) + newStock;
     
-            // Update the stock in the products array
             product.stockQty = updatedStock;
-    
-            // Update the stock label text
+
             const stockLabel = document.querySelector(`.product-card[data-id='${productID}'] .stock-label`);
             stockLabel.textContent = `Stock: ${updatedStock}`;
     

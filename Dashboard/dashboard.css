@@ -150,12 +150,14 @@ align-items: center;
     padding: 20px;
     border-radius: 10px;
 }
-.text-success{
+
+.best-products .text-success{
     color: green;
     background-color: white;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgb(75, 5, 5);
+    border: 1px solid #88C053;
+    box-shadow: -4px -4px 2px #88c0534e;
 }
 .order-container {
     position:fixed; /* or 'fixed' if you want it to stay visible on scroll */
@@ -198,10 +200,6 @@ h3{
     width: 350px;
     /* display: none; */
 }
-.fa-circle-xmark {
-    float: inline-end;
-}
-
 .fa-circle-xmark:hover{
    color: #999;
 }

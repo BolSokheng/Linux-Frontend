@@ -56,14 +56,19 @@ a:focus {
     width: 100%;
     display: flex;
 }
-
+.back-sidebar{
+    min-width: 250px;
+    max-width: 250px;
+}
 #sidebar {
+    position: fixed;
     min-width: 250px;
     max-width: 250px;
     background: #C4DFF2;
     color: #3d3d3d;
     transition: all 0.3s;
-    margin-top: 2%;
+    /* margin-top: 2%; */
+    margin-top:4vh;
     height: 96vh;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
